@@ -23,23 +23,17 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
         //icon = new ImageIcon(getClass().getResource("image.png"));
         //setIconImage(icon.getImage());
         setSize(500, 500);
-        equation = textField1.getText();
-        conicC = new ConicCalc(equation);
-        checkButton.addActionListener(this);
+        checkButton.setEnabled(true);
         setVisible(true);
 
-    }
+        setActionListener();
 
-    public void popUp()
+    }
+    public void setActionListener()
     {
-        String msg ="";
-        if (conicC.doMath(equation))
-        {
-            JOptionPane.showMessageDialog(null, "This is an equation for a circle!", "Calculator", JOptionPane.INFORMATION_MESSAGE);
-
-        }
-
+        checkButton.addActionListener(this);
     }
+
 
     public void actionPerformed(ActionEvent e)
     {
@@ -51,7 +45,28 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
 
             if (text.equals("Check"))
             {
-                popUp();
+                equation = textArea1.getText();
+                conicC = new ConicCalc(equation);
+                if (conicC.determineEquation().equals("The equation represents a parabola."))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents a parabola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if (conicC.determineEquation().equals("The equation represents a hyperbola."))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents a hyperbola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if (conicC.determineEquation().equals("The equation represents an ellipse."))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents an ellipse.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if (conicC.determineEquation().equals("The equation represents a circle."))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents a circle.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if (conicC.determineEquation().equals("The equation represents a line."))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents a line.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                }
 
             }
         }
