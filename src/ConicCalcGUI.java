@@ -20,8 +20,8 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
         setTitle("Conic Section Calculator");
         setContentPane(mainPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //icon = new ImageIcon(getClass().getResource("image.png"));
-        //setIconImage(icon.getImage());
+        icon = new ImageIcon(getClass().getResource("image.png"));
+        setIconImage(icon.getImage());
         setSize(500, 500);
         checkButton.setEnabled(true);
         setVisible(true);
@@ -49,23 +49,28 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
                 conicC = new ConicCalc(equation);
                 if (conicC.determineEquation().equals("The equation represents a parabola."))
                 {
-                    JOptionPane.showMessageDialog(null,"The equation represents a parabola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    ImageIcon parabola = new ImageIcon(getClass().getResource("parabola.png"));
+                    JOptionPane.showMessageDialog(null,"The equation represents a parabola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE, parabola);
                 }
                 else if (conicC.determineEquation().equals("The equation represents a hyperbola."))
                 {
-                    JOptionPane.showMessageDialog(null,"The equation represents a hyperbola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    ImageIcon hyperbola = new ImageIcon(getClass().getResource("hyperbola.png"));
+                    JOptionPane.showMessageDialog(null,"The equation represents a hyperbola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE, hyperbola);
                 }
                 else if (conicC.determineEquation().equals("The equation represents an ellipse."))
                 {
-                    JOptionPane.showMessageDialog(null,"The equation represents an ellipse.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    ImageIcon ellipse = new ImageIcon(getClass().getResource("ellipse.png"));
+                    JOptionPane.showMessageDialog(null,"The equation represents an ellipse.", "Calculation results", JOptionPane.INFORMATION_MESSAGE, ellipse);
                 }
                 else if (conicC.determineEquation().equals("The equation represents a circle."))
                 {
-                    JOptionPane.showMessageDialog(null,"The equation represents a circle.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    ImageIcon circle = new ImageIcon(getClass().getResource("image1.jpg"));
+                    JOptionPane.showMessageDialog(null,"The equation represents a circle.", "Calculation results", JOptionPane.INFORMATION_MESSAGE, circle);
                 }
                 else if (conicC.determineEquation().equals("The equation represents a line."))
                 {
-                    JOptionPane.showMessageDialog(null,"The equation represents a line.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    ImageIcon line = new ImageIcon(getClass().getResource("line.jpg"));
+                    JOptionPane.showMessageDialog(null,"The equation represents a line.", "Calculation results", JOptionPane.INFORMATION_MESSAGE, line);
                 }
 
             }
