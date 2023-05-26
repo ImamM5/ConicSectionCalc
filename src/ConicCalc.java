@@ -28,13 +28,13 @@ public class ConicCalc {
         if (A != 0 && B == 0 && C == 0) {
             return "The equation represents a parabola.";
         }
-        else if (D != 0 ) {
+        else if (D != 0 && A!=0) {
             return "The equation represents a hyperbola.";
         }
         else if (A != B && A != 0){
             return "The equation represents an ellipse.";
         }
-        else if (A == B) {
+        else if (A == B && D == 0) {
             return "The equation represents a circle.";
         } else {
             return "The equation represents a line.";
