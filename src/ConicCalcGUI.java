@@ -117,6 +117,7 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
             {
                 textArea1.setText("");
                 textField1.setText("");
+                textArea1.setBackground(Color.white);
             } else if (text.equals("Clear History"))
             {
                 historyTexts.removeAll(historyTexts);
