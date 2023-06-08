@@ -1,17 +1,25 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 
 
 public class ConicCalcGUI extends JFrame implements ActionListener {
     private JTextField textField1;
     private JPanel mainPanel;
     private JButton checkButton;
+    private JButton clearButton;
     private JTextArea textArea1;
+    private JButton historyButton;
+    private JLabel label;
+    private JButton clearHistory;
     private ImageIcon icon;
     private ConicCalc conicC;
     private String equation;
+    private ArrayList<String> historyTexts;
+    private int historyCounter;
+    private History historyWindow;
 
 
     public ConicCalcGUI()
@@ -22,8 +30,15 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         //icon = new ImageIcon(getClass().getResource("image.png"));
         //setIconImage(icon.getImage());
-        setSize(500, 500);
+        setSize(800, 550);
+
         checkButton.setEnabled(true);
+        historyButton.setEnabled(true);
+        clearButton.setEnabled(true);
+        clearHistory.setEnabled(true);
+
+        historyTexts = new ArrayList<String>();
+        label.setFont(new Font("Monospaced", Font.PLAIN, 25));
         setVisible(true);
 
         setActionListener();
@@ -32,6 +47,9 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
     public void setActionListener()
     {
         checkButton.addActionListener(this);
+        historyButton.addActionListener(this);
+        clearButton.addActionListener(this);
+        clearHistory.addActionListener(this);
     }
 
 
@@ -45,15 +63,35 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
 
             if (text.equals("Check"))
             {
-                equation = textArea1.getText();
+                equation = textField1.getText();
                 conicC = new ConicCalc(equation);
-                if (conicC.determineEquation().equals("The equation represents a parabola."))
+
+                //removes spaces for the elements in the historyTexts arraylist
+                String eqWtSpace = equation.replaceAll("\\s+","");
+                String eqWtSpaceA;
+                ArrayList<String> arrayListChecker = new ArrayList<String>();
+
+                for (String t : historyTexts)
                 {
-                    JOptionPane.showMessageDialog(null,"The equation represents a parabola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    eqWtSpaceA = t.replaceAll("\\s+","");
+                    arrayListChecker.add(eqWtSpaceA);
                 }
-                else if (conicC.determineEquation().equals("The equation represents a hyperbola."))
+
+                if (historyCounter <10 && !arrayListChecker.contains(eqWtSpace)) //sets a limit for history and check for repetition
+                {
+                    historyTexts.add(equation);
+                    historyCounter++;
+                }
+
+                if (conicC.findCSection().equals("hyperbolaF"))
                 {
                     JOptionPane.showMessageDialog(null,"The equation represents a hyperbola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    textArea1.setText(conicC.hyperbolaCalc());
+                }
+                else if (conicC.findCSection().equals("ellipseF"))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents an ellipse.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    textArea1.setText(conicC.ellipseCalc());
                 }
                 else if (conicC.determineEquation().equals("The equation represents an ellipse."))
                 {
@@ -67,7 +105,19 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
                 {
                     JOptionPane.showMessageDialog(null,"The equation represents a line.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
                 }
+            } else if (text.equals("History"))
+            {
+                historyWindow = new History(historyTexts);
 
+
+
+            } else if (text.equals("Clear"))
+            {
+                textArea1.setText("");
+                textField1.setText("");
+            } else if (text.equals("Clear History"))
+            {
+                historyTexts.removeAll(historyTexts);
             }
         }
 
