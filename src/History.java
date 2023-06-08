@@ -6,6 +6,7 @@ public class History extends JFrame {
     private JList list1;
     private JPanel mainPanel;
     private JLabel label;
+    private JLabel counter;
 
     public History(ArrayList<String> str)
     {
@@ -21,6 +22,8 @@ public class History extends JFrame {
 
         list1.setModel(mod);
         list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        counter.setText("You have "+ str.size() + " item(s)!");
+        counter.setFont(new Font("Monospaced", Font.PLAIN, 14));
 
 
 

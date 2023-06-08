@@ -31,6 +31,8 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
         //icon = new ImageIcon(getClass().getResource("image.png"));
         //setIconImage(icon.getImage());
         setSize(800, 550);
+        getContentPane().setBackground(Color.pink);
+
 
         checkButton.setEnabled(true);
         historyButton.setEnabled(true);
