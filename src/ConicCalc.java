@@ -168,12 +168,12 @@ public class ConicCalc {
         double aSq = Double.parseDouble(firstHalf.substring(firstHalf.indexOf("/")+1, firstHalf.length()-1));
         double a = Math.sqrt(aSq);
         String secondHalf = equation.substring(equation.indexOf("y"), equation.indexOf("="));
-        double bSq =  Double.parseDouble(secondHalf.substring(secondHalf.indexOf("/")+1, secondHalf.length()-1));
+        double bSq =  Double.parseDouble(secondHalf.substring(secondHalf.indexOf("/")+1, secondHalf.length()));
 
         double b = Math.sqrt(bSq);
-        double c = Math.sqrt(aSq-bSq);
+        double c = Math.sqrt(bSq -aSq);
 
-        double eccen = Math.sqrt(1-(bSq/aSq));
+        double eccen = c/b;
 
 
         double verX1;
@@ -192,7 +192,7 @@ public class ConicCalc {
         double miAxis;
 
 
-        if (b < a)
+        if (bSq > aSq)
         {
             verX1 = -H;
             verY1 = (-K)-b;
@@ -287,7 +287,7 @@ public class ConicCalc {
         double miAxis;
 
 
-        if (b > a)
+        if (bSq < aSq)
         {
             verX1 = -H;
             verY1 = (-K)-b;
