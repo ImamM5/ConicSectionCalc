@@ -14,6 +14,7 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
     private JButton historyButton;
     private JLabel label;
     private JButton clearHistory;
+    private JLabel labelEq;
     private ImageIcon icon;
     private ConicCalc conicC;
     private String equation;
@@ -30,7 +31,7 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         //icon = new ImageIcon(getClass().getResource("image.png"));
         //setIconImage(icon.getImage());
-        setSize(800, 550);
+        setSize(750, 550);
         getContentPane().setBackground(Color.pink);
 
 
@@ -41,6 +42,7 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
 
         historyTexts = new ArrayList<String>();
         label.setFont(new Font("Monospaced", Font.PLAIN, 25));
+        labelEq.setFont(new Font("Monospaced",Font.PLAIN,16));
         setLocationRelativeTo(null);
         setVisible(true);
 
