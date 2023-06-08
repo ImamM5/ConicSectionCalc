@@ -41,6 +41,7 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
 
         historyTexts = new ArrayList<String>();
         label.setFont(new Font("Monospaced", Font.PLAIN, 25));
+        setLocationRelativeTo(null);
         setVisible(true);
 
         setActionListener();
@@ -83,6 +84,10 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
                 {
                     historyTexts.add(equation);
                     historyCounter++;
+                } else if (historyCounter == 10 && !arrayListChecker.contains(eqWtSpace))
+                {
+                    historyTexts.remove(0);
+                    historyTexts.add(equation);
                 }
 
                 if (conicC.findCSection().equals("hyperbolaF"))

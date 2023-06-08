@@ -15,21 +15,15 @@ public class History extends JFrame {
         DefaultListModel mod = new DefaultListModel();
         label.setFont(new Font("Monospaced", Font.PLAIN, 14));
 
-        for (String texts : str)
+        for (int i = str.size()-1; i >= 0; i--)
         {
-            mod.addElement(texts);
+            mod.addElement(str.get(i));
         }
 
         list1.setModel(mod);
         list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         counter.setText("You have "+ str.size() + " item(s)!");
         counter.setFont(new Font("Monospaced", Font.PLAIN, 14));
-
-
-
-
-
-
         setSize(500, 500);
 
         setLocationRelativeTo(null);

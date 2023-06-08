@@ -20,7 +20,7 @@ public class WelcomeGUI extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.pink);
         closeButton.setBackground(Color.CYAN);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        setLocationRelativeTo(null);
 
         setVisible(true);
     }
