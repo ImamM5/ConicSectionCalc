@@ -34,7 +34,7 @@ public class ConicCalc {
     public String findCSection()
     {
         if (equation.contains(")")) {
-           return determineEquationFactored();
+           return determineEquationStandard();
         }
         else return determineEquation();
 
@@ -44,7 +44,7 @@ public class ConicCalc {
             return "circle.";
         }
         if (A != 0 && B == 0 && C == 0) {
-            return "parabola\n" + parabolaZeroes();
+            return "parabola";
         }
         else if (A!=0 && B < 0) {
             return "hyperbola.";
@@ -60,7 +60,7 @@ public class ConicCalc {
     }
 
     //new added method
-    public String determineEquationFactored()
+    public String determineEquationStandard()
     {
         String str = "";
         int firstPL = equation.indexOf("(");
@@ -138,7 +138,7 @@ public class ConicCalc {
         return val;
     }
 
-    private String parabolaZeroes(){
+    public String parabolaCalculations(){
         double vertex = -D/(2*A);
         double discriminant = Math.pow(D, 2) - (4 * A * E);
         String zeroesString = "No real zeroes";
@@ -153,7 +153,7 @@ public class ConicCalc {
             zeroesString = String.format("Zero: %.2f", -zero);
         }
         String ver = String.format("\nVertex: %.2f", vertex);
-        return zeroesString + ver ;
+        return zeroesString + "\n"+ver + "\n\nY-Intercept: (0," + E + ")\n\nEccentricity: 1";
     }
 
     public String ellipseCalc()

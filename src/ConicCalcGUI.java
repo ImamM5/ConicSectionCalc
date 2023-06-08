@@ -110,6 +110,12 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
                     textArea1.setText(conicC.circleCalc());
                     textArea1.setBackground(Color.orange);
                 }
+                else if (conicC.findCSection().equals("parabola"))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents a parabola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    textArea1.setText("Parabola \n\n"+ conicC.parabolaCalculations());
+                    textArea1.setBackground(Color.green);
+                }
                 else if (conicC.findCSection().equals("ellipse."))
                 {
                     JOptionPane.showMessageDialog(null,"The equation represents an ellipse.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
