@@ -87,11 +87,13 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
                 {
                     JOptionPane.showMessageDialog(null,"The equation represents a hyperbola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
                     textArea1.setText(conicC.hyperbolaCalc());
+                    textArea1.setBackground(Color.CYAN);
                 }
                 else if (conicC.findCSection().equals("ellipseF"))
                 {
                     JOptionPane.showMessageDialog(null,"The equation represents an ellipse.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
                     textArea1.setText(conicC.ellipseCalc());
+                    textArea1.setBackground(Color.YELLOW);
                 }
                 else if (conicC.determineEquation().equals("The equation represents an ellipse."))
                 {
