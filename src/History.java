@@ -27,6 +27,7 @@ public class History extends JFrame {
         setSize(500, 500);
 
         setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.pink);
         setVisible(true);
 
     }

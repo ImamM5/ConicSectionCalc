@@ -102,17 +102,35 @@ public class ConicCalcGUI extends JFrame implements ActionListener {
                     textArea1.setText(conicC.ellipseCalc());
                     textArea1.setBackground(Color.YELLOW);
                 }
-                else if (conicC.determineEquation().equals("The equation represents an ellipse."))
-                {
-                    JOptionPane.showMessageDialog(null,"The equation represents an ellipse.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
-                }
-                else if (conicC.determineEquation().equals("The equation represents a circle."))
+                else if (conicC.findCSection().equals("circleF"))
                 {
                     JOptionPane.showMessageDialog(null,"The equation represents a circle.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    textArea1.setText(conicC.circleCalc());
+                    textArea1.setBackground(Color.orange);
                 }
-                else if (conicC.determineEquation().equals("The equation represents a line."))
+                else if (conicC.findCSection().equals("ellipse."))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents an ellipse.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    textArea1.setText("Ellipse \n\nCalculations not supported for this type of equation yet!!");
+                    textArea1.setBackground(Color.RED);
+                }
+                else if (conicC.findCSection().equals("circle."))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents a circle.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    textArea1.setText("Circle \n\nCalculations not supported for this type of equation yet!!");
+                    textArea1.setBackground(Color.RED);
+                }
+                else if (conicC.findCSection().equals("line."))
                 {
                     JOptionPane.showMessageDialog(null,"The equation represents a line.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    textArea1.setText("Line \n\nCalculations not supported for this type of equation yet!!");
+                    textArea1.setBackground(Color.RED);
+                }
+                else if (conicC.findCSection().equals("hyperbola"))
+                {
+                    JOptionPane.showMessageDialog(null,"The equation represents a hyperbola.", "Calculation results", JOptionPane.INFORMATION_MESSAGE);
+                    textArea1.setText("Hyperbola \n\nCalculations not supported for this type of equation yet!!");
+                    textArea1.setBackground(Color.RED);
                 }
             } else if (text.equals("History"))
             {

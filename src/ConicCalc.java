@@ -108,9 +108,7 @@ public class ConicCalc {
             newStr = newStr.replace(")","");
             newStr = newStr.replace("^2", "");
             K = extractValues(newStr);
-            String radius = equation.substring(equation.indexOf("=") + 1);
-            Double rad = extractValues(radius);
-            return "Circle " + "\ncenter: ("+ -H +","+ -K +")\nRadius: " + Math.sqrt(rad);
+            return "circleF";
         }
         return str;
     }
@@ -171,7 +169,7 @@ public class ConicCalc {
         double bSq =  Double.parseDouble(secondHalf.substring(secondHalf.indexOf("/")+1, secondHalf.length()));
 
         double b = Math.sqrt(bSq);
-        double c = Math.sqrt(bSq -aSq);
+        double c = Math.sqrt(aSq - bSq);
 
         double eccen = c/b;
 
@@ -253,6 +251,14 @@ public class ConicCalc {
 
         return str;
     }
+    public String circleCalc()
+    {
+        String radius = equation.substring(equation.indexOf("=") + 1);
+        Double rad = extractValues(radius);
+        rad = Math.sqrt(rad);
+        return "Circle " + "\n\nCenter: ("+ -H +","+ -K +")\n\nRadius: " + rad +"\n\nDiameter: " + rad*2 + "\n\nCircumfrence: " + rad*2+"π\n\nArea: " + Math.pow(rad,2) +"π";
+
+    }
 
     public String hyperbolaCalc()
     {
@@ -271,61 +277,23 @@ public class ConicCalc {
 
         double eccen = Math.sqrt(1+(bSq/aSq));
 
-        double verX1;
-        double verY1;
-        double verX2;
-        double verY2;
-        double coVerX1;
-        double coVerY1;
-        double coVerX2;
-        double coVerY2;
-        double focusX1;
-        double focusY1;
-        double focusX2;
-        double focusY2;
-        double maAxis;
-        double miAxis;
+        double verX1 = (-H)-a;
+        double verY1 = -K;
+        double verX2 = (-H)+a;
+        double verY2 = -K;
 
+        double coVerX1 = -H;
+        double coVerY1 = (-K)-b;
+        double coVerX2 = (-H);
+        double coVerY2 = (-K)+b;
 
-        if (bSq < aSq)
-        {
-            verX1 = -H;
-            verY1 = (-K)-b;
-            verX2 = -H;
-            verY2 = (-K)+b;
+        double focusX1 = (-H)-c;
+        double focusY1 = -K;
+        double focusX2 = (-H)+c;
+        double focusY2 = -K;
+        double maAxis = 2*a;
+        double miAxis = 2*b;
 
-            coVerX1 = (-H)-a;
-            coVerY1 = (-K);
-            coVerX2 = (-H)+a;
-            coVerY2 = -K;
-
-            focusX1 = -H;
-            focusY1 = (-K)-c;
-            focusX2 = -H;
-            focusY2 = (-K)+c;
-            maAxis = 2*b;
-            miAxis = 2*a;
-
-        }
-        else{
-            verX1 = (-H)-a;
-            verY1 = -K;
-            verX2 = (-H)+a;
-            verY2 = -K;
-
-            coVerX1 = -H;
-            coVerY1 = (-K)-b;
-            coVerX2 = (-H);
-            coVerY2 = (-K)+b;
-
-            focusX1 = (-H)-c;
-            focusY1 = -K;
-            focusX2 = (-H)+c;
-            focusY2 = -K;
-            maAxis = 2*a;
-            miAxis = 2*b;
-
-        }
         // Round the values to 2 decimal places
         verX1 = Math.round(verX1 * 100) / 100.0;
         verY1 = Math.round(verY1 * 100) / 100.0;
